@@ -1827,7 +1827,7 @@ SWimp_Shutdown( void )
 {
 	SWimp_DestroyRender();
 
-	if (SDL_WasInit(SDL_INIT_EVERYTHING) == SDL_INIT_VIDEO)
+	if (SDL_WasInit(SDL_INIT_VIDEO) == SDL_INIT_VIDEO)
 		SDL_Quit();
 	else
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);

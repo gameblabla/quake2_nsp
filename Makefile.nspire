@@ -8,10 +8,10 @@ CXX = nspire-g++
 
 OUTPUTNAME = quakensp
 
-DEFINES = -DSDL -DYQ2OSTYPE=\"Linux\" -DYQ2ARCH=\"arm\" -Dfseeko64=fseeko -Dftello64=ftello -Dfopen64=fopen
+DEFINES = -DSDL -DYQ2OSTYPE=\"Linux\" -DYQ2ARCH=\"arm\"
 INCLUDES = -I. -Isrc
 
-OPT_FLAGS  = -Os -fdata-sections -ffunction-sections -marm -march=armv5te -mtune=arm926ej-s 
+OPT_FLAGS  = -Os -fdata-sections -ffunction-sections -marm -march=armv5te -mtune=arm926ej-s -msoft-float
 
 CFLAGS = $(DEFINES) $(INCLUDES) $(OPT_FLAGS) -std=gnu99
 LDFLAGS = -Wl,--as-needed -Wl,--gc-sections -flto
@@ -135,9 +135,7 @@ OBJS =  \
 	src/common/netchan.o \
 	src/common/pmove.o \
 	src/common/szone.o \
-	src/common/zone.o \
-	src/common/unzip/ioapi.o \
-	src/common/unzip/unzip.o
+	src/common/zone.o 
 	
 OBJS += src/client/refresh/soft/sw_main.o \
 	src/backends/generic_strip/misc.o \
@@ -145,8 +143,7 @@ OBJS += src/client/refresh/soft/sw_main.o \
 	src/common/frame-nolimit.o \
 	src/backends/basic/main.o \
 	src/backends/basic/network.o \
-	src/backends/basic/signalhandler.o \
-	src/backends/basic/system.o \
+	src/backends/basic/system-notime.o \
 	src/backends/basic/shared/hunk.o
   
 .c.o:

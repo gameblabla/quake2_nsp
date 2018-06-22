@@ -11,10 +11,10 @@ OUTPUTNAME = quake2.elf
 DEFINES = -DSDL -DYQ2OSTYPE=\"Linux\" -DYQ2ARCH=\"x86_64\"
 INCLUDES = -I. -Isrc
 
-OPT_FLAGS  = -O2 -ffast-math -fdata-sections -ffunction-sections -Wdouble-promotion -fsingle-precision-constant
+OPT_FLAGS  = -O2 -ffast-math -fdata-sections -ffunction-sections -Wdouble-promotion -fsingle-precision-constant -msoft-float
 
 CFLAGS = $(DEFINES) $(INCLUDES) $(OPT_FLAGS) -std=gnu99
-LDFLAGS = -lSDL -lm 
+LDFLAGS = -lSDL -lm -lsoft-fp
 
 OBJS =  \
 	src/common/shared/flash.o \
@@ -143,8 +143,7 @@ OBJS += src/client/refresh/soft/sw_main.o \
 	src/common/frame-nolimit.o \
 	src/backends/basic/main.o \
 	src/backends/basic/network.o \
-	src/backends/basic/signalhandler.o \
-	src/backends/basic/system.o \
+	src/backends/basic/system-notime.o \
 	src/backends/basic/shared/hunk.o
   
 .c.o:

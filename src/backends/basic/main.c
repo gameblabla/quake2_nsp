@@ -45,12 +45,7 @@ main(int argc, char *argv[])
 	enable_relative_paths(argv);
 	#endif
 	
-	// register signal handler
-	registerHandler();
 
-	// Setup FPU if necessary
-	Sys_SetupFPU();
-	
 #ifdef _TINSPIRE
 	logfp = fopen("log.txt.tns", "w");
 #else
